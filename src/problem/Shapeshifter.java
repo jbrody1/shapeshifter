@@ -11,14 +11,17 @@ public interface Shapeshifter
 		Set<Set<Point>> shapes = findShapes(points, gridSize);
 		Set<Point> largest = null;
 		int largestSize = 0;
-		for (Set<Point> shape : shapes)
+		if (shapes != null)
 		{
-			int size = shape.size();
-			if (size > largestSize)
-			{
-				largest = shape;
-				largestSize = size;
-			}
+    		for (Set<Point> shape : shapes)
+    		{
+    			int size = shape.size();
+    			if (size > largestSize)
+    			{
+    				largest = shape;
+    				largestSize = size;
+    			}
+    		}
 		}
 		return largest;
 	}
