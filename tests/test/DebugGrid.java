@@ -12,16 +12,11 @@ public class DebugGrid extends Grid
 		super(size);
 	}
 
-	public boolean contains(Point point)
-	{
-		return points.contains(point);
-	}
-
 	public boolean containsAny(Collection<Point> points)
 	{
 		for (Point point : points)
 		{
-			if (this.points.contains(point))
+			if (contains(point))
 			{
 				return true;
 			}
@@ -29,3 +24,4 @@ public class DebugGrid extends Grid
 		return false;
 	}
 }
+

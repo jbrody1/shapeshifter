@@ -40,6 +40,11 @@ public class Grid
 		return Collections.unmodifiableSet(points);
 	}
 
+	public boolean contains(Point point)
+	{
+		return points.contains(point);
+	}
+
 	public int size()
 	{
 		return size;
