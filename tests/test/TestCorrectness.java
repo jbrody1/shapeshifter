@@ -27,7 +27,7 @@ public class TestCorrectness extends AbstractTest
 	@Test
 	public void testShapeDetection() throws Exception
 	{
-		int size = maxShapeSize / + (int) (Math.random() * maxShapeSize);
+		int size = maxShapeSize + (int) (Math.random() * maxShapeSize);
 		Grid grid = generateGrid(size);
 
 		Shapeshifter shapeshifter = createShapeshifter(grid);

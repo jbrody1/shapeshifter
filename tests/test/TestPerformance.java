@@ -18,7 +18,7 @@ public class TestPerformance extends AbstractTest
 	private static final int numShapes = 100;
 	private static final int minShapeSize = 10;
 	private static final int maxShapeSize = 1000;
-	private static final int iterations = 200;
+	private static final int iterations = 100;
 
 	private Grid generateGrid()
 	{

@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import glint.SetShape;
-import glint.Shape;
 import problem.Grid;
 import problem.Point;
 import problem.Shapeshifter;
@@ -25,14 +23,14 @@ public abstract class AbstractTest
 	public void testShapeGeneration() throws IOException
 	{
 		DebugGrid grid = new DebugGrid(10000);
-		Set<Shape> shapes = generateShapes(grid, 10, 10, 100);
+		Set<DebugShape> shapes = generateShapes(grid, 10, 10, 100);
 		debug(grid);
 		assertEquals(10, shapes.size());
 	}
 
-	protected Set<Shape> generateShapes(DebugGrid grid, int numShapes, int minSize, int maxSize)
+	protected Set<DebugShape> generateShapes(DebugGrid grid, int numShapes, int minSize, int maxSize)
 	{
-		Set<Shape> shapes = new HashSet<>();
+		Set<DebugShape> shapes = new HashSet<>();
 		if (numShapes <= 0) return shapes;
 
 		minSize = Math.max(minSize, 1);
@@ -45,7 +43,7 @@ public abstract class AbstractTest
 		for (int i=numShapes; i>0; i--)
 		{
 			char display = Character.forDigit(i, 10);
-			Shape shape = generateShape(grid, display, size);
+			DebugShape shape = generateShape(grid, display, size);
 			shapes.add(shape);
 			points.addAll(shape.getPoints());
 			size -= step;
@@ -56,7 +54,7 @@ public abstract class AbstractTest
 		return shapes;
 	}
 
-	private Shape generateShape(DebugGrid grid, char display, int size)
+	private DebugShape generateShape(DebugGrid grid, char display, int size)
 	{
 		Point point;
 		// try 5 times before giving up
@@ -64,13 +62,13 @@ public abstract class AbstractTest
 		{
 			//point = new TestPoint(display, (int)(Math.random() * grid.size()), (int)(Math.random() * grid.size()));
 			point = new Point((int)(Math.random() * grid.size()), (int)(Math.random() * grid.size()));
-			SetShape shape = new SetShape();
+			DebugShape shape = new DebugShape();
 			if (generateShape(grid, point, shape, display, size)) return shape;
 		}
 		throw new RuntimeException("unable to generate shape " + display);
 	}
 
-	private boolean generateShape(DebugGrid grid, Point point, SetShape shape, char display, int size)
+	private boolean generateShape(DebugGrid grid, Point point, DebugShape shape, char display, int size)
 	{
 		if (grid.contains(point) || shape.contains(point)) return false;
 
@@ -119,10 +117,10 @@ public abstract class AbstractTest
 
 	public void debug(Set<Point> points) throws IOException
 	{
-		debug(new SetShape(points.toArray(new Point[0])));
+		debug(new DebugShape(points.toArray(new Point[0])));
 	}
 
-	public void debug(Shape shape) throws IOException
+	public void debug(DebugShape shape) throws IOException
 	{
 		shape.print(System.out);
 	}
