@@ -8,19 +8,18 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import problem.Grid;
 import problem.Point;
 import problem.Shapeshifter;
 
 public class TestPerformance extends AbstractTest
 {
 	private static final int gridSize = 1000000;
-	private static final int numShapes = 100;
-	private static final int minShapeSize = 10;
-	private static final int maxShapeSize = 1000;
+	private static final int numShapes = 50;
+	private static final int minShapeSize = 100;
+	private static final int maxShapeSize = 2000;
 	private static final int iterations = 20;
 
-	private Grid generateGrid()
+	private DebugGrid generateGrid()
 	{
 		DebugGrid grid = new DebugGrid(gridSize);
 		generateShapes(grid, numShapes, minShapeSize, maxShapeSize);
@@ -30,17 +29,17 @@ public class TestPerformance extends AbstractTest
 	@Test
 	public void testPerformance() throws Exception
 	{
-		List<Grid> grids = new ArrayList<>();
+		List<DebugGrid> grids = new ArrayList<>();
 		for (int i=0; i<iterations; i++)
 		{
 			grids.add(generateGrid());
 		}
 
 		long time = System.nanoTime();
-		for (Grid grid : grids)
+		for (DebugGrid grid : grids)
 		{
-			Shapeshifter shapeshifter = createShapeshifter(grid);
-			Set<Point> shape = shapeshifter.findLargestShape();
+			Shapeshifter shapeshifter = createShapeshifter();
+			Set<Point> shape = shapeshifter.findLargestShape(grid.getAll(), grid.size());
 			assertNotNull(shape);
 			assertEquals(maxShapeSize, shape.size());
 		}

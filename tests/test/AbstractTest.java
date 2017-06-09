@@ -15,9 +15,9 @@ import solution.MyShapeshifter;
 
 public abstract class AbstractTest
 {
-	public Shapeshifter createShapeshifter(Grid grid)
+	public Shapeshifter createShapeshifter()
 	{
-		return new MyShapeshifter(grid);
+		return new MyShapeshifter();
 	}
 
 	public void testShapeGeneration() throws IOException
@@ -90,7 +90,7 @@ public abstract class AbstractTest
 		return false;
 	}
 
-	private static Set<Point> getAdjacentPoints(Point point, Grid grid)
+	private static Set<Point> getAdjacentPoints(Point point, DebugGrid grid)
 	{
 		Set<Point> adjacent = point.getAdjacentPoints();
 		Set<Point> points = new HashSet<>(adjacent.size(), 1);
