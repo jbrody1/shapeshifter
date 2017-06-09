@@ -2,27 +2,15 @@ package solution;
 
 import java.util.Set;
 
-import problem.Grid;
 import problem.Point;
 import problem.Shapeshifter;
 
-public class MyShapeshifter extends Shapeshifter
+public class MyShapeshifter implements Shapeshifter
 {
-	public MyShapeshifter(Grid grid)
-	{
-		super(grid);
-	}
-
-	public Set<Set<Point>> findShapes() throws Exception
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Set<Point> findLargestShape() throws Exception
+	public Set<Set<Point>> findShapes(Set<Point> points) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 }
+
