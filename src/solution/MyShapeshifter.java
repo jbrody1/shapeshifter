@@ -7,10 +7,9 @@ import problem.Shapeshifter;
 
 public class MyShapeshifter implements Shapeshifter
 {
-	public Set<Set<Point>> findShapes(Set<Point> points) throws Exception
+	public Set<Set<Point>> findShapes(Set<Point> points, int gridSize) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 }
-
