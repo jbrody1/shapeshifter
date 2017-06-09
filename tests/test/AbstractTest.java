@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 import problem.Grid;
 import problem.Point;
@@ -70,24 +71,32 @@ public abstract class AbstractTest
 
 	private boolean generateShape(DebugGrid grid, Point point, DebugShape shape, char display, int size)
 	{
-		if (grid.contains(point) || shape.contains(point)) return false;
-
-		Set<Point> adjacent = getAdjacentPoints(point, grid);
-		adjacent.removeAll(shape.getPoints());
-		if (grid.containsAny(adjacent)) return false;
-
-		//debug("adding point " + point + " to shape " + display);
-		shape.add(point);
-		if (shape.size() == size) return true;
-
-		List<Point> list = new ArrayList<>(adjacent);
-		int start = (int) (list.size() * Math.random());
-		for (int i=0; i<list.size(); i++)
+		Stack<Point> candidates = new Stack<>();
+		candidates.push(point);
+		while (size > 0 && !candidates.isEmpty())
 		{
-			Point next = list.get((start + i) % list.size());
-			if (generateShape(grid, next, shape, display, size)) return true;
+			point = candidates.pop();
+
+			if (grid.contains(point) || shape.contains(point)) continue;
+
+			Set<Point> adjacent = getAdjacentPoints(point, grid);
+			adjacent.removeAll(shape.getPoints());
+			if (grid.containsAny(adjacent)) continue;
+
+			//debug("adding point " + point + " to shape " + display);
+			shape.add(point);
+			size--;
+
+			List<Point> list = new ArrayList<>(adjacent);
+			int start = (int) (list.size() * Math.random());
+			for (int i=0; i<list.size(); i++)
+			{
+				Point next = list.get((start + i) % list.size());
+				candidates.push(next);
+			}
 		}
-		return false;
+
+		return size == 0;
 	}
 
 	private static Set<Point> getAdjacentPoints(Point point, DebugGrid grid)

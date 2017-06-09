@@ -13,5 +13,5 @@
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="test.TestPerformance"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="shapeshifter"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea -Xmx6g -Xms6g"/>
 </launchConfiguration>
