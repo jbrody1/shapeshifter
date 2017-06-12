@@ -13,7 +13,7 @@ import problem.Shapeshifter;
 
 public class TestPerformance extends AbstractTest
 {
-	private static final int gridSize = 1000000;
+	private static final int gridSize = 10000;
 	private static final int numShapes = 10;
 	private static final int minShapeSize = 1000;
 	private static final int maxShapeSize = 10000;
@@ -39,7 +39,7 @@ public class TestPerformance extends AbstractTest
 		for (DebugGrid grid : grids)
 		{
 			Shapeshifter shapeshifter = createShapeshifter();
-			Set<Point> shape = shapeshifter.findLargestShape(grid.getAll(), grid.size());
+			Set<Point> shape = shapeshifter.findLargestShape(grid);
 			assertNotNull(shape);
 			assertEquals(maxShapeSize, shape.size());
 		}

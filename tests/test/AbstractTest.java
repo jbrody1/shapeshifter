@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-import problem.Grid;
 import problem.Point;
 import problem.Shapeshifter;
 import solution.MyShapeshifter;
@@ -119,7 +118,7 @@ public abstract class AbstractTest
 		System.out.println(o);
 	}
 
-	public void debug(Grid grid) throws IOException
+	public void debug(DebugGrid grid) throws IOException
 	{
 		grid.print(System.out);
 	}

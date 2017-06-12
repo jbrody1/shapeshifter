@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import problem.Grid;
 import problem.Point;
 
 public class DebugShape
@@ -58,7 +57,7 @@ public class DebugShape
 		Set<Point> points = getPoints();
 		Point topLeft = computeTopLeft(points);
 		Point bottomRight = computeBottomRight(points);
-		Grid.print(out, points, topLeft, bottomRight);
+		DebugGrid.print(out, points, topLeft, bottomRight);
 	}
 
 	static Point computeTopLeft(Set<Point> points)

@@ -30,11 +30,11 @@ public class TestCorrectness extends AbstractTest
 		DebugGrid grid = generateGrid(size);
 
 		Shapeshifter shapeshifter = createShapeshifter();
-		Set<Set<Point>> found = shapeshifter.findShapes(grid.getAll(), grid.size());
+		Set<Set<Point>> found = shapeshifter.findShapes(grid);
 		assertNotNull(found);
 		assertEquals(numShapes, found.size());
 		
-		Set<Point> shape = shapeshifter.findLargestShape(grid.getAll(), grid.size());
+		Set<Point> shape = shapeshifter.findLargestShape(grid);
 		assertNotNull(shape);
 		assertEquals(size, shape.size());
 	}

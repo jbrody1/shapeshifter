@@ -6,48 +6,27 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import problem.Grid;
 import problem.Point;
 
-public class DebugGrid
+class DebugGrid extends Grid
 {
-	private final int size;
-	private final Set<Point> points = new HashSet<Point>();
-
-	public DebugGrid(int size)
+	DebugGrid(int size)
 	{
-		this.size = size;
+		super(size);
 	}
 
-	public void add(Point point)
-	{
-		points.add(point);
-	}
-
-	public void addAll(Collection<Point> points)
-	{
-		for (Point point : points)
-		{
-			add(point);
-		}
-	}
-
-	public Set<Point> getAll()
+	Set<Point> getAll()
 	{
 		return Collections.unmodifiableSet(points);
 	}
 
-	public boolean contains(Point point)
-	{
-		return points.contains(point);
-	}
-
-	public boolean containsAny(Collection<Point> points)
+	boolean containsAny(Collection<Point> points)
 	{
 		for (Point point : points)
 		{
@@ -57,11 +36,6 @@ public class DebugGrid
 			}
 		}
 		return false;
-	}
-
-	public int size()
-	{
-		return size;
 	}
 
 	public String toString()
