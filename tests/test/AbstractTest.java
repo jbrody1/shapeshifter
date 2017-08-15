@@ -39,7 +39,6 @@ public abstract class AbstractTest
 		int size = maxSize;
 		int step = (maxSize - minSize) / (numShapes-1);
 
-		List<Point> points = new ArrayList<>();
 		for (int i=numShapes; i>0; i--)
 		{
 			char display = Character.forDigit(i, 10);
