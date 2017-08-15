@@ -44,13 +44,14 @@ public abstract class AbstractTest
 		{
 			char display = Character.forDigit(i, 10);
 			DebugShape shape = generateShape(grid, display, size);
-			shapes.add(shape);
+			List<Point> points = new ArrayList<>();
 			points.addAll(shape.getPoints());
+			// randomize point order before adding to grid, just in case
+			Collections.shuffle(points);
+			grid.addAll(points);
+			shapes.add(shape);
 			size -= step;
 		}
-		// randomize point order before adding to grid, just in case
-		Collections.shuffle(points);
-		grid.addAll(points);
 		return shapes;
 	}
 
