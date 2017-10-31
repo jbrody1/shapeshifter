@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
@@ -19,11 +18,6 @@ class DebugGrid extends Grid
 	DebugGrid(int size)
 	{
 		super(size);
-	}
-
-	Set<Point> getAll()
-	{
-		return Collections.unmodifiableSet(points);
 	}
 
 	boolean containsAny(Collection<Point> points)
@@ -54,7 +48,7 @@ class DebugGrid extends Grid
 
 	public void print(OutputStream out) throws IOException
 	{
-		print(out, getAll(), new Point(0, 0), new Point(size()-1, size()-1));
+		print(out, points, new Point(0, 0), new Point(size()-1, size()-1));
 	}
 
 	public static void print(OutputStream out, Set<Point> points, Point topLeft, Point bottomRight) throws IOException
@@ -86,3 +80,4 @@ class DebugGrid extends Grid
 		}
 	}
 }
+
